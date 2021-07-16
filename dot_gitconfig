@@ -1,0 +1,10 @@
+[user]
+	name = Rugwiro Mbanda Valentin
+	email = rugwirobaker@gmail.com
+	signingkey = EC81B5CD040F207F
+[commit]
+	gpgsign = true
+[init]
+	defaultBranch = main
+[core]
+	editor = nano
