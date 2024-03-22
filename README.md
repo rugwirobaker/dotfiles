@@ -24,7 +24,7 @@ cd ~/.dotfiles
 stow .
 ```
 
-## Bring back all my brew packages from .Brewfile
+## Bring back all my brew packages
 
 Make sure brew bundle is installed:
 
@@ -36,4 +36,20 @@ Install all the packages from the .Brewfile:
 
 ```bash
 brew bundle --file=.Brewfile
+```
+
+## Restore history(atuin)
+
+Login to atuin our atuin server:
+
+```bash
+atuin login -u <USERNAME>
+```
+
+You will be prompted for your password, and for your key.
+
+Restore the history:
+
+```bash
+atuin sync
 ```
