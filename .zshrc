@@ -70,7 +70,7 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(git nix-zsh-completions)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -105,8 +105,63 @@ export CPPFLAGS="-I/opt/homebrew/opt/openssl@1.1/include"
 
 #golang
 export GOPATH=$HOME/go
-export GOROOT="$(brew --prefix golang)/libexec"
+export GOROOT=/usr/local/go
 export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:$GOROOT/bin
+
+# Date format
 export HISTTIMEFORMAT="%d/%m/%y %T "
+# MYSQL
 export PATH="/opt/homebrew/opt/mysql-client/bin:$PATH"
+
+export GPG_TTY=$(tty)
+
+# direnv
+eval "$(direnv hook zsh)"
+
+. /opt/homebrew/opt/asdf/libexec/asdf.sh
+export PATH="/opt/homebrew/opt/openssl@3/bin:$PATH"
+
+# docker host
+export DOCKER_HOST=tcp://100.93.217.19:2375
+export FRUITBOX_HOST=100.93.217.19
+export PKG_CONFIG_PATH=/usr/local/opt/openssl/lib/pkgconfig
+
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /opt/homebrew/bin/terraform terraform
+
+alias tailscale="/Applications/Tailscale.app/Contents/MacOS/Tailscale"
+
+# Brew
+export HOMEBREW_NO_INSTALL_FROM_API=1
+
+# 1password configuration
+eval "$(op completion zsh)"
+compdef _op op
+OP_BIOMETRIC_UNLOCK_ENABLED=true
+
+# completion scripts
+fpath=(~/.zsh/completion $fpath)
+autoload -Uz compinit && compinit
+
+# flyctl
+alias fly=flyctl
+
+#deno
+export DENO_INSTALL="/Users/codechef/.deno"
+export PATH="$DENO_INSTALL/bin:$PATH"
+
+# bun completions
+[ -s "/Users/codechef/.bun/_bun" ] && source "/Users/codechef/.bun/_bun"
+
+# atuin activation
+eval "$(atuin init zsh)"
+
+# tailscale cmline
+alias tailscale="/Applications/Tailscale.app/Contents/MacOS/Tailscale"
+
+# zoxide
+eval "$(zoxide init --cmd cd zsh)"
+
+# Set up fzf key bindings and fuzzy completion
+eval "$(fzf --zsh)"
