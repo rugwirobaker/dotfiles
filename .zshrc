@@ -136,8 +136,6 @@ alias tailscale="/Applications/Tailscale.app/Contents/MacOS/Tailscale"
 export HOMEBREW_NO_INSTALL_FROM_API=1
 
 # 1password configuration
-eval "$(op completion zsh)"
-compdef _op op
 OP_BIOMETRIC_UNLOCK_ENABLED=true
 
 # completion scripts
